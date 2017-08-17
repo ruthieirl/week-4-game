@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--page title shows in tab on browser-->
+	<title>Week 4 Game - Crystals Collector</title>
+
+	<!--linking Bootstrap styles-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
+	<!--google font style-->
+	<link href="https://fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+	<!--linking external stylesheet, reset-->
+	<!--link rel="stylesheet" type="text/css" href="assets/css/reset.css"-->
+	<!--linking external stylesheet, my styles-->
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css"/>
+</head>
+<body>
+	
+	<div class="container">
+		
+		<div class="jumbotron">
+			
+			<h1>Crystals Collector</h1>
+
+			<p><span class="purp">&#9673</span>&nbsp;You will be given a random number at the start of the game.</p>
+
+			<p><span class="purp">&#9673</span>&nbsp;There are four crystals below.  By clicking on a crystal, you will add a specific amount of points to your total score.</p>
+
+			<p><span class="purp">&#9673</span>&nbsp;You win the game by matching your total score to the random number.  You lose the game is your total score goes above the random number.</p>
+
+			<p><span class="purp">&#9673</span>&nbsp;The value of each crystal is hidden from you until you click on it.</p>
+
+			<p><span class="purp">&#9673</span>&nbsp;Each time the game starts, the values of the crystals will change.</p>
+		
+		</div><!--jumbotron-->
+		<div class="jumbotron">
+		<div class="row">
+			
+			<div class="col-md-4 col-sm-12 col-xs-12 text-center">
+				
+				<h3>Random Number:</h3>
+				
+				<div id="randomNumber"></div>
+			
+			</div>
+
+			<div id="scoreBoard" class="col-md-4 col-sm-12 col-xs-12 text-center">
+				
+				<h3>Wins: </h3>
+				
+				<h3>Losses: </h3>
+			
+			</div><!--scoreBoard-->
+
+			<div class="row col-md-4 col-sm-12 col-xs-12 text-center">
+				
+				<div class="text-center col-md-12"><h3>Your Total Score Is:</h3></div>
+
+				<div class="col-md-12" id="score"></div>
+			
+			</div>
+
+		</div>
+
+		<div class="row col-md-12">
+			
+			<div class="col-md-2 col-sm-0 col-xs-0"></div>
+			
+			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/greenish.png" alt="Jade Crystal"/></div>
+			
+			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/bluish.png" alt="Clear Quartz"/></div>
+			
+			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/purplish.png" alt="Amethyst"/></div>
+			
+			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/pinkish.png" alt="Rose Quartz"/></div>
+			
+			<div class="col-md-2 col-sm-0 col-xs-0"></div>
+		
+		</div>
+	</div>
+	</div><!--container-->
+</body>
+</html>
