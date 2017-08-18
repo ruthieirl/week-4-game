@@ -6,6 +6,7 @@ $(document).ready(function() {
 	var losses = 0; 
 	var score = "";
 	//Computer needs to generate random number between 19 and 120. 
+	//PROBLEM: Random number goes up to 120 but I saw 16 pop up, so something is wrong.
 	var targetNumber = Math.floor(Math.random() * 120) + 1;
 	//Takes the target number and places it in the correct div for display.
 	$("#targetNumber").html("<h3>" + targetNumber + "</h3>");
@@ -20,29 +21,36 @@ $(document).ready(function() {
 		var crystal = $("<img>");
 		console.log(valueOptions[i]);
 		crystal.addClass("images");
+		//This only assigns this particular pic.  How to use pics from array???
 		crystal.attr("src", "assets/images/greenish.png");
 		crystal.attr("data-crystalvalue", valueOptions[i]);
 		$(".imageHolder").append(crystal);
 
 	}
 	//Every time a crystal button is clicked, the value of the button is added. 
+	$("body").on("click", ".btn", function() {
+		var crystalValue = ($(this).attr("data-crystalvalue"));
+    	crystalValue = parseInt(crystalValue);
+    	//Recognizes my clicks, but the values are undefined.
+    	console.log($(this).attr("data-crystalvalue"))
+	});
 	//If the user number and computer's random number match, user wins. Game resets.
-	//if (targetNumber === score) {
-	//	wins++;
-	//	$("#scoreboard").html("<h2>Wins: " + wins + "</h2>" +
-	//						  "<h2>Losses: " + losses + "</h2>");
-	//	console.log(wins);
-	//	console.log(losses);
-	//	score = 0;
+	if (targetNumber === score) {
+		wins++;
+		$("#scoreboard").html("<h2>Wins: " + wins + "</h2>" +
+							  "<h2>Losses: " + losses + "</h2>");
+		console.log(wins);
+		console.log(losses);
+		score = 0;
 
-	//}
+	}
 	//If user number is greater than computer's random number, user loses. Game resets.
-	//if (score > targetNumber) {
-	//	losses++;
-	//	$("#scoreboard").html("<h2>Wins: " + wins + "</h2>" +
-	//						  "<h2>Losses: " + losses + "</h2>");
-	//	console.log(wins);
-	//	console.log(losses);
-	//	score = 0;
-	//}
+	if (score > targetNumber) {
+		losses++;
+		$("#scoreboard").html("<h2>Wins: " + wins + "</h2>" +
+							  "<h2>Losses: " + losses + "</h2>");
+		console.log(wins);
+		console.log(losses);
+		score = 0;
+	}
 }); //$(document).ready();
