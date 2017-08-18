@@ -22,15 +22,15 @@
 			
 			<h1>Crystals Collector</h1>
 
-			<p><span class="purp">&#9673</span>&nbsp;You will be given a random number at the start of the game.</p>
+			<p><span class="purp">&#9673</span>&nbsp;&nbsp;You will be given a random number at the start of the game.</p>
 
-			<p><span class="purp">&#9673</span>&nbsp;There are four crystals below.  By clicking on a crystal, you will add a specific amount of points to your total score.</p>
+			<p><span class="purp">&#9673</span>&nbsp;&nbsp;There are four crystals below.  By clicking on a crystal, you will add a specific amount of points to your total score.</p>
 
-			<p><span class="purp">&#9673</span>&nbsp;You win the game by matching your total score to the random number.  You lose the game is your total score goes above the random number.</p>
+			<p><span class="purp">&#9673</span>&nbsp;&nbsp;You win the game by matching your total score to the random number.  You lose the game if your total score goes above the random number.</p>
 
-			<p><span class="purp">&#9673</span>&nbsp;The value of each crystal is hidden from you until you click on it.</p>
+			<p><span class="purp">&#9673</span>&nbsp;&nbsp;The value of each crystal is hidden from you until you click on it.</p>
 
-			<p><span class="purp">&#9673</span>&nbsp;Each time the game starts, the values of the crystals will change.</p>
+			<p><span class="purp">&#9673</span>&nbsp;&nbsp;Each time the game starts, the values of the crystals will change.</p>
 		
 		</div><!--jumbotron-->
 		<div class="jumbotron">
@@ -40,7 +40,7 @@
 				
 				<h3>Random Number:</h3>
 				
-				<div id="randomNumber"></div>
+				<div id="targetNumber"></div>
 			
 			</div>
 
@@ -66,18 +66,15 @@
 			
 			<div class="col-md-2 col-sm-0 col-xs-0"></div>
 			
-			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/greenish.png" alt="Jade Crystal"/></div>
-			
-			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/bluish.png" alt="Clear Quartz"/></div>
-			
-			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/purplish.png" alt="Amethyst"/></div>
-			
-			<div class="col-md-2 col-sm-6 col-xs-6"><img class="crystalImages" src="assets/images/pinkish.png" alt="Rose Quartz"/></div>
+			<div class="col-md-8 col-sm-4 col-xs-4 imageHolder"></div>
 			
 			<div class="col-md-2 col-sm-0 col-xs-0"></div>
 		
 		</div>
 	</div>
 	</div><!--container-->
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script><!--jQuery script source-->
+	<script src="assets/javascript/game.js"></script><!--my javascript and jQuery-->
 </body>
 </html>
