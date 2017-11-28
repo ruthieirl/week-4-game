@@ -1,7 +1,7 @@
 -----------------------------------------
 # Crystal Picker - Week 4 Game
 
-#### JavaScript jQuery Bootstrap HTML CSS
+#### JavaScript * jQuery * Bootstrap * HTML * CSS
 
 
 -----------------------------------------
