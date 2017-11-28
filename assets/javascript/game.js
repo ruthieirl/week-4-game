@@ -1,66 +1,128 @@
-//Make sure that nothing happens until page is comepletel loaded.
+//Make sure that nothing happens until page is comepletely loaded.
 $(document).ready(function() {
 
-	//Set up variables to hold our numbers.
-	var wins = 0;
-	var losses = 0; 
-	var counter = 0;
-
-	//Computer needs to generate random number between 19 and 120. 
-	//PROBLEM: Random number goes up to 120 but I saw 16 pop up, so something is wrong.
-	var targetNumber = Math.floor(Math.random() * 120) + 1;
-
-	//Takes the target number and places it in the correct div for display.
-	$("#targetNumber").html("<h3>" + targetNumber + "</h3>");
-
-	//Computer needs to generate the four images and random values of crystal buttons.
-	//Values are between 1 and 12.
-	var valueOptions = [1, 5, 11, 9];
-	console.log(valueOptions);
-
-	//Create an array of image sources for crystals
-	var images = ["assets/images/greenish.png", "assets/images/bluish.png", "assets/images/purplish.png", "assets/images/pinkish.png"]
-
-	//Set each of the four images
-	$.each(images, function (index, value) {
-		$("#imageHolder").append("<img src=" + value + " width='150px'>");
-		console.log(index + " : " + value);
-	});
-
-	//Create loop to assign value
-	for (var i = 0; i < valueOptions.length; i++) {
-		$("img").addClass("btn")
-		$(".btn").attr("data-crystalvalue", valueOptions[i]);
-		console.log("data-crystalvalue");
+//Global Variables**********************************
+var crystal = {
+	green:
+	{
+		name: "Green",
+		value: 0
+	},
+	blue:
+	{
+		name: "Blue",
+		value: 0
+	},
+	purple:
+	{
+		name: "Purple",
+		value: 0
+	},
+	pink:
+	{
+		name: "Pink",
+		value: 0
 	}
+};
 
-	//Every time a crystal button is clicked, the value of the button is added. 
-	//PROBLEM: Now it doesn't seem to be "clicked"
-	$("body").on("click", ".btn", function() {
-		console.log(this);
-		var crystalValue = ($(this).attr("data-crystalvalue"));
-    	crystalValue = parseInt(crystalValue);
-    	console.log(crystalValue);
-    	console.log($(this).attr("data-crystalvalue"));
-	});
+//Scores
+var currentScore = 0;
+var targetScore = 0;
 
-	//If the user number and computer's random number match, user wins. Game resets.
-	if (targetNumber === counter) {
-		wins++;
-		$("#scoreboard").html("<h2>Wins: " + wins + "</h2>" +
-							  "<h2>Losses: " + losses + "</h2>");
-		console.log(wins);
-		console.log(losses);
-		counter = 0;
+//Wins and Losses
+var winCount = 0;
+var lossCount = 0;
 
+//Functions****************************************
+
+//Helper to get random numbers
+var getRandom = function(min, max) {
+	return Math.floor(Math.random() * (max - min +1)) + min;
+}
+
+//Will start and restart game
+var startGame = function() {
+
+	//Reset Current Score
+	currentScore = 0;
+
+	//Set a new Target Score (between 19 and 120)
+	targetScore = getRandom(19, 120);
+	
+	//Set different values for each of the crystals
+	crystal.green.value = getRandom(1, 12);
+	crystal.blue.value = getRandom(1, 12);
+	crystal.purple.value = getRandom(1, 12);
+	crystal.pink.value = getRandom(1, 12);
+	
+	//Show all these changes in HTML
+	$("#yourScore").html(currentScore);
+	$("#targetScore").html(targetScore);
+
+	//Testing
+	console.log("***************************************");
+	console.log("Target Score: " + targetScore);
+	console.log("Green: " + crystal.green.value);
+	console.log("Blue: " + crystal.blue.value);
+	console.log("Purple: " + crystal.purple.value);
+	console.log("Pink: " + crystal.pink.value);
+	console.log("***************************************");
+
+};
+
+//Respond to clicks
+var addValues = function(crystal) {
+	//Change current score
+	currentScore = currentScore + crystal.value;
+	//Change HTML to reflect score
+	$("#yourScore").html(currentScore);
+	//Check if the user wins or losses
+	checkWin();
+	//Testing
+	console.log("Your Score " + currentScore);
+};
+
+//Check if your score 
+var checkWin = function() {
+	
+	if(currentScore > targetScore) {
+		alert("Sorry. You lost!");
+		console.log("You lost.");
+		
+		//Add to loss counter 
+		lossCount++;
+		$("#lossCount").html(lossCount);
+
+		//Restart game
+		startGame();
+
+	} else if (currentScore == targetScore) {
+		alert("Congratulations! You da man.");
+		console.log("You won!");
+
+		//Add to win counter
+		winCount++
+		$("#winCount").html(winCount);
+
+		//Restart game
+		startGame();
 	}
-	//If user number is greater than computer's random number, user loses. Game resets.
-	if (counter > targetNumber) {
-		losses++;
-		$("#scoreboard").html("<h2>Wins: " + wins + "</h2>" +
-							  "<h2>Losses: " + losses + "</h2>");
-		console.log(wins);
-		console.log(losses);
-		counter = 0;
-	}
+};
+
+//Main Processes***********************************
+startGame();
+
+$("#green").click(function() {
+	addValues(crystal.green);
+});
+$("#blue").click(function() {
+	addValues(crystal.blue);
+});
+$("#purple").click(function() {
+	addValues(crystal.purple);
+});
+$("#pink").click(function() {
+	addValues(crystal.pink);
+});
+
 }); //$(document).ready();

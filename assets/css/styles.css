@@ -16,3 +16,7 @@ h1, h2, h3, h4 {
 .purp {
 	color: #cc66ff;
 }
+
+img {
+	width: 150px;
+}
